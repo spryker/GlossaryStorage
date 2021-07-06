@@ -135,7 +135,7 @@ class GlossaryTranslationStorageWriter implements GlossaryTranslationStorageWrit
             $idGlossaryKey = $glossaryTranslationEntityTransfer->getFkGlossaryKey();
             $localeName = $glossaryTranslationEntityTransfer->getLocale()->getLocaleName();
 
-            if ((!$glossaryTranslationEntityTransfer->getIsActive() || !$glossaryTranslationEntityTransfer->getGlossaryKey()->getIsActive() || !$glossaryTranslationEntityTransfer->getValue())) {
+            if (!$glossaryTranslationEntityTransfer->getIsActive() || !$glossaryTranslationEntityTransfer->getGlossaryKey()->getIsActive() || (string) $glossaryTranslationEntityTransfer->getValue() === "") {
                 unset($glossaryTranslationEntityTransfers[$id]);
 
                 if (isset($mappedGlossaryStorageEntityTransfers[$idGlossaryKey][$localeName])) {
